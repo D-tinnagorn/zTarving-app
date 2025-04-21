@@ -36,6 +36,10 @@ i18n.changeLanguage(newLang)
   const handleShowPass = () => {
     setShowPass(!showPass);
   };
+
+  const handlelogin = async() => {
+
+  }
   return (
     <View style={styles.container}>
       <View style={styles.box_header}>
