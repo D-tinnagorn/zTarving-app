@@ -104,7 +104,7 @@ const Register = () => {
           const response = await authService.registerUser(body);
           setLoading(true);
 
-          if (response.status == 201) {
+          if (response.status == 200) {
             setTimeout(() => {
               navigation.goBack();
             }, 1000);

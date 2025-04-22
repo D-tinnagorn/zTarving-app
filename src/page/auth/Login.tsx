@@ -13,12 +13,16 @@ import {getFontFamily} from '../../common/utils/font';
 import i18n from '../../i18n';
 import {IconCloseEye, IconEye} from '../../assets/Icon';
 import { useNavigation } from '@react-navigation/native';
-import { REGISTER_PAGE } from '../../routes/constant';
+import { HOME_PAGE, REGISTER_PAGE } from '../../routes/constant';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import { authService } from '../../services/auth';
+import { SET_LOCAL } from '../../common/storage/LocalStorage';
+import { ACCESS_TOKEN } from '../../common/storage/constant';
 
 type RootStackParamList = {
   REGISTER_PAGE:undefined
+  HOME_PAGE:undefined
 };
 
 
@@ -28,6 +32,8 @@ const Login = () => {
   const lang = i18n.language
 
   const [showPass, setShowPass] = useState(false);
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
 
   const handleChangeLanguage = (newLang: string) => {
 i18n.changeLanguage(newLang)
@@ -38,6 +44,24 @@ i18n.changeLanguage(newLang)
   };
 
   const handlelogin = async() => {
+    try {
+      const body = {
+        email,
+        password
+      }
+      const response = await authService.login(body)
+      if(response.status == 200) {
+        const access_token = {
+          access_token:response.data.access_token
+        }
+        SET_LOCAL(ACCESS_TOKEN,access_token)
+        
+        navigation.navigate(HOME_PAGE)
+      }
+    } catch (error) {
+      console.error('login error',error);
+      
+    }
 
   }
   return (
@@ -86,6 +110,10 @@ i18n.changeLanguage(newLang)
             keyboardType="email-address"
             style={styles.text_box}
             placeholder={t('email')}
+            value={email}
+            onChangeText={text => setEmail(text)}
+            autoCapitalize='none'
+
           />
           <View
             style={[
@@ -106,6 +134,9 @@ i18n.changeLanguage(newLang)
                 color: color.primary,
               }}
               placeholder={t('password')}
+              value={password}
+              onChangeText={text => setPassword(text)}
+              autoCapitalize='none'
             />
             <TouchableOpacity onPress={() => handleShowPass()}>
               {showPass ? <IconEye /> : <IconCloseEye />}
@@ -130,7 +161,9 @@ i18n.changeLanguage(newLang)
               alignItems: 'center',
               padding: 5,
               borderRadius: 100,
-            }}>
+            }}
+            onPress={()=>handlelogin()}
+            >
             <Text
               style={{
                 color: color.white,
