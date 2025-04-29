@@ -1,5 +1,9 @@
-export const LOGIN_PAGE = 'LOGIN_PAGE'
+export const MAIN_APP_PAGE = "MAIN_APP_PAGE";
 
-export const REGISTER_PAGE = 'REGISTER_PAGE'
+export const LOGIN_PAGE = "LOGIN_PAGE";
 
-export const HOME_PAGE = 'HOME_PAGE'
+export const REGISTER_PAGE = "REGISTER_PAGE";
+
+export const BOTTOM_TABS_PAGE = "BOTTOM_TABS_PAGE";
+
+export const HOME_PAGE = "HOME_PAGE";

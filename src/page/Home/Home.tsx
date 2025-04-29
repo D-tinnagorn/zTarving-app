@@ -9,7 +9,6 @@ const [access_token,setAccess_Token] = useState("")
       
   const getDataFromLocal = async () => {
     const data = await GET_LOCAL(ACCESS_TOKEN);
-    console.log(data);
     setAccess_Token(data.access_token)
     
   };

@@ -16,7 +16,7 @@ import {useTranslation} from 'react-i18next';
 import i18n from '../../i18n';
 import {authService} from '../../services/auth';
 import {checkEmail, register} from '../../type';
-import Loading from '../../../component/Loading';
+import Loading from '../../../components/Loading';
 import Modal from 'react-native-modal';
 import {isValidEmail} from '../../Constant/format';
 

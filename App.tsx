@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import MainApp from './src/MainApp'
+import StackRoute from './src/routes/StackRoute'
 const App = () => {
   return (
    <>
-    <MainApp/>
+    <StackRoute/>
    </>
   )
 }
