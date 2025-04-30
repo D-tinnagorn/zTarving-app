@@ -22,6 +22,27 @@ import Svg, {
   FeComposite,
   FeBlend} from 'react-native-svg';
 
+  export function IconSearch({...props}:SvgProps){
+    return(
+      <Svg
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M17.5 17.5l-3.625-3.625m1.958-4.708a6.667 6.667 0 11-13.333 0 6.667 6.667 0 0113.333 0z"
+        stroke="#ED9141"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+    )
+  }
+
   export function IconAlert({...props}:SvgProps){
     return (
       <Svg
